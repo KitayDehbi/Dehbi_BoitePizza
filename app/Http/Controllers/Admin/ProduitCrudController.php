@@ -27,9 +27,9 @@ class ProduitCrudController extends CrudController
         $this->crud->addField([ 
             'label' => "Categorie",
             'type' => 'select2',
-            'name' => 'categorie_id', // the db column for the foreign key
-            'entity' => 'categorie', // the method that defines the relationship in your Model
-            'attribute' => 'name', // foreign key attribute that is shown to user
+            'name' => 'categorie_id', 
+            'entity' => 'categorie', 
+            'attribute' => 'name', 
             'model' => "App\Models\Categorie"
         ]);
     }

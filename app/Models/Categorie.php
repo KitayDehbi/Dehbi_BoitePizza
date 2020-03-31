@@ -22,6 +22,7 @@ class Categorie extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    
     public function product()
     {
         return $this->hasOne(product::class);

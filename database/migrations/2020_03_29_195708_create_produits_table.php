@@ -15,15 +15,16 @@ class CreateProduitsTable extends Migration
         Schema::create('produits', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->unsignedInteger('prix');
-            $table->unsignedInteger('remise');
+            $table->double('prix',8,2);
+            $table->double('remise',8,2);
             $table->unsignedInteger('categorie_id');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->boolean('isPromo');
-            $table->text('imgPath');
+            $table->String('imgPath');
             $table->timestamps();
-            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('categorie_id')->references('id')->
+            on('categories')->onDelete('cascade');
         });
     }
 
