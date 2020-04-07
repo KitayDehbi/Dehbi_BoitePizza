@@ -21,7 +21,7 @@ class CreateProduitsTable extends Migration
             $table->date('date_debut');
             $table->date('date_fin');
             $table->boolean('isPromo');
-            $table->String('imgPath');
+            $table->LONGTEXT('imgPath');
             $table->timestamps();
             $table->foreign('categorie_id')->references('id')->
             on('categories')->onDelete('cascade');

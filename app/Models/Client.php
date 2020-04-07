@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-class Produit extends Model
+class Client extends Model
 {
     use CrudTrait;
 
@@ -15,17 +15,13 @@ class Produit extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'produits';
+    protected $table = 'clients';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
-    public function categorie()
-    {
-        return $this->belongsTo(categorie::class);
-    }
     public function setImgPathAttribute($value)
     {
         $attribute_name = "imgpath";

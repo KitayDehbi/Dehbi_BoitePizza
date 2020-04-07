@@ -82,7 +82,7 @@ return [
     'sidebar_class' => 'sidebar bg-white sidebar-pills',
     'footer_class' => 'app-footer d-print-none bg-white',
     'developer_name' => 'Dehbi Ayoub',
-    'project_logo'   => '<b>Boite</b>Pizza',
+    'project_logo'   => ' <b>Boite</b>Pizza',
     'project_name' => 'BoitePizza',
     
     // For background colors use: bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white

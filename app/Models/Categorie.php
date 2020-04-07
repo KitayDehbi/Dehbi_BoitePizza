@@ -25,7 +25,7 @@ class Categorie extends Model
     
     public function product()
     {
-        return $this->hasOne(product::class);
+        return $this->hasMany(product::class);
     }
     /*
     |--------------------------------------------------------------------------
