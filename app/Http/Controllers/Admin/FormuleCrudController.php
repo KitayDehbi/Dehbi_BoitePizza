@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests\FormuleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Illuminate\Support\Str;
 
 /**
- * Class ClientCrudController
+ * Class FormuleCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ClientCrudController extends CrudController
+class FormuleCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -22,8 +21,9 @@ class ClientCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Client');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/client');
+        $this->crud->setModel('App\Models\Formule');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/formule');
+        $this->crud->setEntityNameStrings('formule', 'formules');
         $this->crud->addField([ 
             'label' => "image",
             'type' => 'image',
@@ -35,31 +35,22 @@ class ClientCrudController extends CrudController
             // 'prefix' => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
             
         ]);
-        
-        $this->crud->setEntityNameStrings('client', 'clients');
-        /*$this->crud->addField([ 
-            'label' => "mot de passe",
-            'type' => 'password',
-            'name' => 'password', 
-            'default' => Str::random(8)
-        ]);*/
     }
 
     protected function setupListOperation()
     {
-        $field1=['label' => "nom",
+        // TODO: remove setFromDb() and manually define Columns, maybe Filters
+        //$this->crud->setFromDb();
+        $field1=['label' => "Name",
         'type' => 'text',
         'name' => 'nom', ];
-        $field2=['label' => "prenom",
+        $field2=['label' => "Prix",
+        'type' => 'double',
+        'name' => 'prix', ];
+        $field3=['label' => "Description",
         'type' => 'text',
-        'name' => 'prenom', ];
-        $field3=['label' => "adresse",
-        'type' => 'text',
-        'name' => 'adresse', ];
-        $field4=['label' => "email",
-        'type' => 'text',
-        'name' => 'email', ];
-        $field5=[
+        'name' => 'description', ];
+        $field4=[
             'label'=>'image',
             'type' => 'image',
             'name' => 'imgPath',
@@ -67,12 +58,12 @@ class ClientCrudController extends CrudController
             'height' => '80px',
             'width' => '80px',
         ];
-        $this->crud->addColumns([$field5,$field1,$field2,$field3,$field4]);
+        $this->crud->addColumns([$field4,$field1,$field2,$field3]);
     }
 
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(ClientRequest::class);
+        $this->crud->setValidation(FormuleRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->setFromDb();
@@ -85,26 +76,23 @@ class ClientCrudController extends CrudController
     protected function setupShowOperation()
     {
         $this->crud->set('show.setFromDb', false);
-        $field1=['label' => "nom",
+        $field1=['label' => "Name",
         'type' => 'text',
         'name' => 'nom', ];
-        $field2=['label' => "prenom",
+        $field2=['label' => "Prix",
+        'type' => 'double',
+        'name' => 'prix', ];
+        $field3=['label' => "Description",
         'type' => 'text',
-        'name' => 'prenom', ];
-        $field3=['label' => "adresse",
-        'type' => 'text',
-        'name' => 'adresse', ];
-        $field4=['label' => "email",
-        'type' => 'text',
-        'name' => 'email', ];
-        $field5=[
+        'name' => 'description', ];
+        $field4=[
             'label'=>'image',
             'type' => 'image',
             'name' => 'imgPath',
             'prefix' => 'storage/',
-            'height' => '100px',
-            'width' => '100px',
+            'height' => '80px',
+            'width' => '80px',
         ];
-        $this->crud->addColumns([$field5,$field1,$field2,$field3,$field4]);
+        $this->crud->addColumns([$field4,$field1,$field2,$field3]);
     }
 }

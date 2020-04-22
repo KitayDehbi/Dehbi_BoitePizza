@@ -26,6 +26,10 @@ class Produit extends Model
     {
         return $this->belongsTo(categorie::class);
     }
+    public function commantaire()
+    {
+        return $this->hasMany(commantaire::class);
+    }
     public function setImgPathAttribute($value)
     {
         $attribute_name = "imgpath";
