@@ -36,3 +36,9 @@ class CreateCommentairesTable extends Migration
         Schema::dropIfExists('Commentaires');
     }
 }
+
+
+
+
+
+

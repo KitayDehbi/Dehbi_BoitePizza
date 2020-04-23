@@ -22,14 +22,17 @@ class Commentaire extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+
     public function produit()
     {
         return $this->belongsTo(produit::class);
     }
+    
     public function client()
     {
         return $this->belongsTo(client::class);
     }
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS

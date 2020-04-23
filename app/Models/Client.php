@@ -22,10 +22,12 @@ class Client extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+   
     public function commantaire()
     {
         return $this->hasMany(commantaire::class);
     }
+
     public function setImgPathAttribute($value)
     {
         $attribute_name = "imgpath";

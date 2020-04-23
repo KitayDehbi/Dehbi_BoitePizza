@@ -26,11 +26,12 @@ class CommentaireCrudController extends CrudController
         $this->crud->setEntityNameStrings('commentaire', 'commentaires');
         $this->crud->addField([ 
             'label' => "produit",
-            'type' => 'select2_multiple',
+            'type' => 'select2',
             'name' => 'produit_id', 
             'entity' => 'produit', 
             'attribute' => 'name', 
-            'model' => "App\Models\Produit"
+            'model' => "App\Models\Produit",
+            
         ]);
         $this->crud->addField([ 
             'label' => "client",
@@ -50,13 +51,11 @@ class CommentaireCrudController extends CrudController
                 'language' => 'fr'
              ],
         ]);
-        //$this->crud->setValidation(commentaire::class);
     }
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        //$this->crud->setFromDb();
+        
         $field1=['label' => "Produit",
         'type' => 'text',
         'name' => 'Produit.name' ];
@@ -69,7 +68,6 @@ class CommentaireCrudController extends CrudController
         $field4=['label' => "Corp",
         'type' => 'text',
         'name' => 'texte' ];
-
         $this->crud->addColumns([$field1,$field2,$field3,$field4]);
         
     }
@@ -86,7 +84,9 @@ class CommentaireCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
+    
     protected function setupShowOperation()
+    
     {$this->crud->set('show.setFromDb', false);
         $field1=['label' => "Produit",
         'type' => 'text',

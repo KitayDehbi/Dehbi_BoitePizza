@@ -6,6 +6,7 @@ use App\Http\Requests\FormuleRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
+
 /**
  * Class FormuleCrudController
  * @package App\Http\Controllers\Admin
@@ -18,6 +19,7 @@ class FormuleCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\RevisionsOperation;
 
     public function setup()
     {
@@ -31,8 +33,7 @@ class FormuleCrudController extends CrudController
             'upload' => true,
             'crop' => true, 
             'aspect_ratio' => 1, 
-            'disk' => 'public', // in case you need to show images from a different disk
-            // 'prefix' => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+            'disk' => 'public', 
             
         ]);
     }
@@ -96,3 +97,8 @@ class FormuleCrudController extends CrudController
         $this->crud->addColumns([$field4,$field1,$field2,$field3]);
     }
 }
+
+
+
+
+

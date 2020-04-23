@@ -32,3 +32,4 @@ class CreateFormulesTable extends Migration
         Schema::dropIfExists('Formules');
     }
 }
+

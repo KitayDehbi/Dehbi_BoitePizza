@@ -53,7 +53,11 @@ class CommentaireRequest extends FormRequest
     public function messages()
     {
         return [
-            'texte' => 'champ invalid'
+            'texte.required' => 'champ obligatoire',
+            'texte.min' => 'ce champ doit contenir au minimum 10 caracteres',
+            'client_id' => 'champ obligatoire',
+            'produit_id' => 'champ obligatoire',
+            'date_pub' => 'champ obligatoire'
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 class Formule extends Model
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
     use CrudTrait;
 
     /*
@@ -59,6 +60,11 @@ class Formule extends Model
             $this->attributes[$attribute_name] = $public_destination_path.'/'.$filename;
 
         }}
+        
+    
+        // If you are using another bootable trait
+        // be sure to override the boot method in your model
+    
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
