@@ -5,7 +5,9 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-class Client extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+class Client extends Authenticatable
 {
     use CrudTrait;
 
@@ -23,11 +25,14 @@ class Client extends Model
     // protected $hidden = [];
     // protected $dates = [];
    
-    public function commantaire()
+    public function produits()
     {
-        return $this->hasMany(commantaire::class);
+        return $this->belongsToMany(produit::class,'commentaire');
     }
 
+
+
+    
     public function setImgPathAttribute($value)
     {
         $attribute_name = "imgpath";
@@ -80,4 +85,36 @@ class Client extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+         'email', 'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+    public function getAuthPassword()
+    {
+      return $this->password;
+    }
 }

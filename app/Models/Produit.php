@@ -28,11 +28,18 @@ class Produit extends Model
     }
     
     
-    public function commantaire()
+    public function clients()
     {
-        return $this->hasMany(commantaire::class);
+        return $this->belongsToMany(client::class,'commentaire');
     }
-
+    public function elements()
+    {
+        return $this->belongsToMany(Element::class);
+    }
+    public function commandes()
+    {
+        return $this->belongsToMany(Commande::class);
+    }
 
     public function setImgPathAttribute($value)
     {
@@ -53,10 +60,10 @@ class Produit extends Model
         if (starts_with($value, 'data:image'))
         {
             // 0. Make the image
-            $image = \Image::make($value)->encode('jpg', 90);
+            $image = \Image::make($value)->encode('png', 90);
 
         // 1. Generate a filename.
-            $filename = md5($value.time()).'.jpg';
+            $filename = md5($value.time()).'.png';
 
         // 2. Store the image on disk.
             \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());

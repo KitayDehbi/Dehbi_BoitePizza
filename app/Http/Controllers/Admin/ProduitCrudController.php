@@ -43,7 +43,15 @@ class ProduitCrudController extends CrudController
             // 'prefix' => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
             
         ]);
-        
+        $this->crud->addField([ 
+            'label' => "elements",
+            'type' => 'select2_multiple',
+            'name' => 'elements', 
+            'entity' => 'elements', 
+            'attribute' => 'nom', 
+            'model' => "App\Models\Element",
+            'pivot' => true
+        ]);
     }
 
     protected function setupListOperation()
@@ -116,6 +124,15 @@ class ProduitCrudController extends CrudController
             'height' => '120px',
             'width' => '120px',
         ];
-        $this->crud->addColumns([$field6,$field1,$field2,$field3,$field4,$field5]);
+        $field7=[ 
+            'label' => "elements",
+            'type' => 'select_multiple',
+            'name' => 'elements', 
+            'entity' => 'elements', 
+            'attribute' => 'nom', 
+            'model' => "App\Models\Element",
+            'pivot' => true
+        ];
+        $this->crud->addColumns([$field6,$field1,$field7,$field2,$field3,$field4,$field5]);
     }
 }

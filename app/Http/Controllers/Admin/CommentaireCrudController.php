@@ -31,7 +31,6 @@ class CommentaireCrudController extends CrudController
             'entity' => 'produit', 
             'attribute' => 'name', 
             'model' => "App\Models\Produit",
-            
         ]);
         $this->crud->addField([ 
             'label' => "client",
